@@ -1,0 +1,69 @@
+#
+# This file is part of the RPSGuestbookBundle package.
+#
+# (c) Yos Okus <yos.okus@gmail.com>
+#
+# This source file is subject to the MIT license that is bundled
+# with this source code in the file LICENSE.
+
+rps_guestbook_list:
+    pattern:  /guestbook/{page}
+    defaults: { _controller: RPSGuestbookBundle:Guestbook:index, page: 1 }
+    requirements:
+        page: \d+
+
+rps_guestbook_new:
+    pattern:  /guestbook/new
+    defaults: { _controller: RPSGuestbookBundle:Guestbook:add}
+
+rps_guestbook_add:
+    pattern:  /guestbook/add
+    defaults: { _controller: RPSGuestbookBundle:Guestbook:add }
+    methods: [POST]
+
+#admin routes
+rps_guestbook_admin:
+    pattern:  /admin/guestbook/{page}
+    defaults: { _controller: RPSGuestbookBundle:Admin:index, page: 1 }
+    requirements:
+        page: \d+
+
+rps_guestbook_edit:
+    pattern:  /admin/guestbook/edit/{id}
+    defaults: { _controller: RPSGuestbookBundle:Admin:edit }
+    requirements:
+        page: \d+
+
+rps_guestbook_cancel:
+    pattern:  /admin/guestbook/cancel
+    defaults: { _controller: RPSGuestbookBundle:Admin:cancel }
+
+rps_guestbook_delete:
+    pattern:  /admin/guestbook/delete
+    defaults: { _controller: RPSGuestbookBundle:Admin:delete }
+    methods: [POST]
+
+rps_guestbook_remove:
+    pattern:  /admin/guestbook/remove/{id}
+    defaults: { _controller: RPSGuestbookBundle:Admin:remove }
+
+rps_guestbook_reply:
+    pattern:  /admin/guestbook/reply/{id}
+    defaults: { _controller: RPSGuestbookBundle:Admin:reply }
+
+rps_guestbook_publish:
+    pattern:  /admin/guestbook/publish
+    defaults: { _controller: RPSGuestbookBundle:Admin:changeState, state: 1 }
+    methods: [POST]
+
+rps_guestbook_unpublish:
+    pattern:  /admin/guestbook/unpublish
+    defaults: { _controller: RPSGuestbookBundle:Admin:changeState, state: 0 }
+    methods: [POST]
+
+rps_guestbook_change_state:
+    pattern:  /admin/guestbook/changestate/{state}
+    defaults: { _controller: RPSGuestbookBundle:Admin:changeState }
+    methods: [GET]
+    requirements:
+        state: \d+

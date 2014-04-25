@@ -1,0 +1,32 @@
+{
+    "name": "rps/guestbook-bundle",
+    "description": "Symfony RPSGuestbookBundle",
+    "keywords": ["package", "symfony", "guestbook"],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yos Okus",
+            "email": "yos.okus@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/symfony": "~2.3",
+		"yosokus/symfony-core-bundle": "dev-master"
+    },
+
+    "require-dev": {
+        "doctrine/orm": "~2.3"
+    },
+
+    "suggest": {
+        "white-october/pagerfanta-bundle": "Integrates white-october/pagerfanta for pagination.",
+        "ornicar/akismet-bundle": "Integrates Akismet for spamdetection."
+    },
+
+    "autoload": {
+        "psr-0": { "RPS\\GuestbookBundle": "" }
+    },
+
+    "target-dir": "RPS/GuestbookBundle"
+}

@@ -1,0 +1,26 @@
+{#
+
+ This file is part of the RPSCommentBundle package.
+
+ (c) Yos Okus <yos.okus@gmail.com>
+
+ This source file is subject to the MIT license that is bundled
+ with this source code in the file LICENSE.
+#}
+
+{% extends 'RPSCoreBundle::layout.html.twig' %}
+
+{% set title = 'title.guestbook'|trans({}, 'RPSGuestbookBundle') %}
+{% block title %}{{ title }}{% endblock %}
+{% block content_title %}<h2>{{ title }}</h2>{% endblock %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% stylesheets '@RPSGuestbookBundle/Resources/public/css/guestbook.css' %}
+        <link href="{{ asset_url }}" type="text/css" rel="stylesheet/css" />
+    {% endstylesheets %}
+
+    {# <link rel="stylesheet" href="{{ asset('bundles/rpsguestbook/css/guestbook.css') }}" /> #}
+{% endblock %}
