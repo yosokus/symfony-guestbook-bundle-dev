@@ -4,25 +4,11 @@ Step 1 : Installation
 Download and install RPSGuestbookBundle
 ---------------------------------------
 
-Add the following lines in your `deps` file
-
-.. code-block:: php
-
-    //composer.json
-    "require": {
-    //...
-        "rps/symfony-core-bundle": "dev-master",
-        "rps/symfony-guestbook-bundle": "dev-master",
-    //...
-    }
-
-Update the dependency
+Run the following command
 
 .. code-block:: bash
 
-    php composer.phar require rps/symfony-guestbook-bundle"
-
-    php composer.phar require "rps/symfony-core-bundle:dev-master rps/symfony-guestbook-bundle:dev-master"
+    php composer.phar require rps/symfony-guestbook-bundle
 
 
 Enable the bundle
@@ -54,10 +40,20 @@ Run the following command
 Install the css file
 --------------------
 
-Click here:doc:`default_configuration` to see the default configuration
 
 Default Configuration
 ---------------------
+
+Click here:doc:`default_configuration` to see the default configuration
+
+`Default Configuration`_.
+
+.. _`Default Configuration`: Resources/doc/index.rst/default_configuration.rst
+
+
+`View Default Configuration`_.
+
+.. _`View Default Configuration`: https://github.com/yosokus/symfony-guestbook-bundle-dev/blob/master/Resources/doc/index.rst
 
 .. code-block:: yml
 
