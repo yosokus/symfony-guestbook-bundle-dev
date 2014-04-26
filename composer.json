@@ -12,7 +12,7 @@
     ],
     "require": {
         "symfony/symfony": "~2.3",
-		"yosokus/symfony-core-bundle": "dev-master"
+		"rps/symfony-core-bundle": "dev-master"
     },
 
     "require-dev": {
