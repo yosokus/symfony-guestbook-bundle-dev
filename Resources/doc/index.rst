@@ -44,72 +44,65 @@ Install the css file
 Default Configuration
 ---------------------
 
-Click here:doc:`default_configuration` to see the default configuration
-
-`Default Configuration`_.
-
-.. _`Default Configuration`: Resources/doc/index.rst/default_configuration.rst
-
-
 `View Default Configuration`_.
 
-.. _`View Default Configuration`: https://github.com/yosokus/symfony-guestbook-bundle-dev/blob/master/Resources/doc/index.rst
+.. _`View Default Configuration`: Resources/doc/default_configuration.rst
 
 .. code-block:: yml
 
-	rps_guestbook:
-		db_driver: orm
-		entry_per_page: 25				# number of entries to show on a page
-		auto_publish: true				# publish new entries or wait for admin approval
-		notify_admin: false				# send notification mail to admin when a new entry is saved
-		date_format: "d/m/Y H:i:s"		# date format used
+    rps_guestbook:
+        db_driver: orm
+        entry_per_page: 25              # number of entries to show on a page
+        auto_publish: true              # publish new entries or wait for admin approval
+        notify_admin: false             # send notification mail to admin when a new entry is saved
+        date_format: "d/m/Y H:i:s"      # date format used
 
-		mailer:
-			admin_email: ~				# email the admin notification is sent to
-			sender_email: ~				# sender email used
-			email_title: ~				# (optional)
+        mailer:
+            admin_email: ~              # email the admin notification is sent to
+            sender_email: ~             # sender email used
+            email_title: ~              # (optional)
 
-		class:
-			model: ~					# (optional)
-			manager: ~					# (optional)
-			pager : ~					# (optional)
-			mailer: ~					# (optional)
+        class:
+            model: ~                    # (optional)
+            manager: ~                  # (optional)
+            pager : ~                   # (optional)
+            mailer: ~                   # (optional)
 
-		view:
-			frontend:
-				list: ~					# guestbook entries view
-				new: ~					# guestbook form
+        view:
+            frontend:
+                list: ~                 # guestbook entries view
+                new: ~                  # guestbook form
 
-			admin:
-				list: ~					# admin guestbook entries view
-				edit: ~					# admin guestbook entry edit view
-				reply: ~				# admin guestbook entry reply view
+            admin:
+                list: ~                 # admin guestbook entries view
+                edit: ~                 # admin guestbook entry edit view
+                reply: ~                # admin guestbook entry reply view
 
-			mail:
-				notify: ~				# notification mail template
+            mail:
+                notify: ~               # notification mail template
 
-		form:
-			entry:
-				name: ~
-				type: ~
-				class: ~				# guestbook entry form class
+        form:
+            entry:
+                name: ~
+                type: ~
+                class: ~                # guestbook entry form class
 
-			edit:
-				name: ~
-				type: ~
-				class: ~				# guestbook entry edit form class
+            edit:
+                name: ~
+                type: ~
+                class: ~                # guestbook entry edit form class
 
-			reply:
-				name: ~
-				type: ~
-				class: ~				# guestbook entry reply form class
+            reply:
+                name: ~
+                type: ~
+                class: ~                # guestbook entry reply form class
 
-		spam_detection:
-			enable: false				# set to true to enable spam detection
-			service: ~					# custom spam detector service (optional)
+        spam_detection:
+            enable: false               # set to true to enable spam detection
+            service: ~                  # custom spam detector service (optional)
 
-		service:
-			pager: ~					# custom pager service (optional)
+        service:
+            pager: ~                    # custom pager service (optional)
 
 
 Each configuration option can be overriden in the app/config/config.yml file
@@ -123,8 +116,8 @@ It is configured for ORM by default. To use Doctrine ODM, you must set this in t
 
 .. code-block:: yml
 
-	rps_guestbook:
-		db_driver: mongodb
+    rps_guestbook:
+        db_driver: mongodb
 
 
 
@@ -141,9 +134,9 @@ You can specify a custom model class by overriding the guestbook model class opt
 
 .. code-block:: yml
 
-	rps_guestbook:
-		class:
-			model: MyProject\MyBundle\Entity\MyGuestbook
+    rps_guestbook:
+        class:
+            model: MyProject\MyBundle\Entity\MyGuestbook
 
 Your custom model class may extend the ``RPS\GuestbookBundle\Model\Entry`` class. If you are not extending the
 ``RPS\GuestbookBundle\Model\Entry`` class, your custom manager class must implement the
@@ -157,9 +150,9 @@ You can specify a custom guestbook entry manager class by overriding the manager
 
 .. code-block:: yml
 
-	rps_guestbook:
-		class:
-			manager: MyProject\MyBundle\Entity\MyGuestbookManager
+    rps_guestbook:
+        class:
+            manager: MyProject\MyBundle\Entity\MyGuestbookManager
 
 Your custom class may extend the ``RPS\GuestbookBundle\Model\EntryManager`` class. If you are not extending the
 ``RPS\GuestbookBundle\Model\EntryManager`` class, your custom manager class must implement the
@@ -176,13 +169,13 @@ you must enable the mailer service and set the mail ``admin_email`` and ``sender
 
 .. code-block:: yml
 
-	rps_guestbook:
-		notify_admin: true
+    rps_guestbook:
+        notify_admin: true
 
-		mailer:
-			admin_email: admin@localhost.com				# email the admin notification is sent to
-			sender_email: admin@localhost.com				# sender email used
-			email_title: New guestbook entry from {name}	# (optional)
+        mailer:
+            admin_email: admin@localhost.com                # email the admin notification is sent to
+            sender_email: admin@localhost.com               # sender email used
+            email_title: New guestbook entry from {name}    # (optional)
 
 
 Using a custom mailer class
@@ -191,9 +184,9 @@ You can specify your custom guestbook mailer manager class by overriding the mai
 
 .. code-block:: yml
 
-	rps_guestbook:
-		class:
-			manager: MyProject\MyBundle\Mailer\Mailer
+    rps_guestbook:
+        class:
+            manager: MyProject\MyBundle\Mailer\Mailer
 
 Your custom class may extend the ``RPS\GuestbookBundle\Mailer\BaseMailer`` class. If you are not extending the
 ``RPS\GuestbookBundle\Mailer\BaseMailer`` class, your custom mailer class must implement the
@@ -207,10 +200,10 @@ You can specify a custom notification template by overriding the mail template c
 
 .. code-block:: yml
 
-	rps_guestbook:
-		view:
-			mail:
-				notify: MyBundle:Mail:notify.txt.twig
+    rps_guestbook:
+        view:
+            mail:
+                notify: MyBundle:Mail:notify.txt.twig
 
 
 
@@ -228,8 +221,8 @@ To limit the number of entries shown, set the ``entry_per_page`` config option
 
 .. code-block:: yml
 
-	rps_guestbook:
-		entry_per_page: 25
+    rps_guestbook:
+        entry_per_page: 25
 
 Using a custom pager manager class
 ----------------------------------
@@ -238,9 +231,9 @@ You can specify your custom pager manager class by overriding the pager class op
 
 .. code-block:: yml
 
-	rps_guestbook:
-		class:
-			manager: MyProject\MyBundle\Pager\Pager
+    rps_guestbook:
+        class:
+            manager: MyProject\MyBundle\Pager\Pager
 
 Your custom class must implement the ``\RPS\CoreBundle\Pager\PagerInterface`` interface.
 
@@ -267,9 +260,9 @@ To enable spam detection, you must set the spam_detection config option.
 
 .. code-block:: yml
 
-	rps_guestbook:
-		spam_detection:
-			enable: true
+    rps_guestbook:
+        spam_detection:
+            enable: true
 
 You must then install the OrnicarAkismentBundle or use a different spam dector and integrate it with the GuestbookBundle.
 
@@ -293,8 +286,8 @@ You can also specify a custom spam detection service by setting the spam_detecti
 .. code-block:: yml
 
     rps_guestbook:
-		spam_detection:
-			service: my_spam_detector
+        spam_detection:
+            service: my_spam_detector
 
 Your spam detector service class must implement the ``RPS\GuestbookBundle\SpamDetection\SpamDetectorInterface`` interface.
 
@@ -305,16 +298,16 @@ You can specify custom templates/views by overriding the corresponding view para
 
 .. code-block:: yml
 
-	rps_guestbook:
-		view:
-			frontend:
-				list: MyprojectMyBundle:Frontend:index.html.twig
-				new: MyprojectMyBundle:Frontend:new.html.twig
+    rps_guestbook:
+        view:
+            frontend:
+                list: MyprojectMyBundle:Frontend:index.html.twig
+                new: MyprojectMyBundle:Frontend:new.html.twig
 
-			admin:
-				list: MyprojectMyBundle:Admin:index.html.twig
-				edit: MyprojectMyBundle:Admin:edit.html.twig
-				reply: MyprojectMyBundle:Admin:reply.html.twig
+            admin:
+                list: MyprojectMyBundle:Admin:index.html.twig
+                edit: MyprojectMyBundle:Admin:edit.html.twig
+                reply: MyprojectMyBundle:Admin:reply.html.twig
 
-			mail:
-				notify: MyprojectMyBundle:Mail:notify.txt.twig
+            mail:
+                notify: MyprojectMyBundle:Mail:notify.txt.twig
