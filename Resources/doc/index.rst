@@ -1,14 +1,31 @@
-Step 1 : Installation
-=====================
+1 : Installation
+================
 
 Download and install RPSGuestbookBundle
 ---------------------------------------
 
-Run the following command
+1. Add the following lines in your `deps` file
+
+.. code-block:: php
+
+    // composer.json
+    "require": {
+    //...,
+        "rps/core-bundle": "dev-master",
+        "rps/guestbook-bundle": "dev-master"
+    }
+
+2. Update the dependency
 
 .. code-block:: bash
 
-    php composer.phar require rps/symfony-guestbook-bundle
+    php composer.phar update rps/guestbook-bundle
+
+Or you can do both steps in one command
+
+.. code-block:: bash
+
+    php composer.phar require rps/core-bundle:dev-master rps/guestbook-bundle:dev-master
 
 
 Enable the bundle
@@ -22,8 +39,8 @@ Add the RPSCoreBundle and RPSGuestbookBundle to your application kernel
     public function registerBundles()
     {
         $bundles = array(
-            // ...
-            new RPSCoreBundle\RPSCoreBundle(),
+            // ...,
+            new RPS\CoreBundle\RPSCoreBundle(),
             new RPS\GuestbookBundle\RPSGuestbookBundle(),
         );
     }
@@ -40,6 +57,44 @@ Run the following command
 Install the css file
 --------------------
 
+Run the following command
+
+.. code-block:: php
+
+    php app/console assets:install web [--symlink]
+
+use the ``--symlink`` option to use symlinks to bundle assets.
+
+
+Enable Translator
+-----------------
+
+Enable the translator in your configuration
+
+.. code-block:: yml
+
+    # app/config/config.yml
+    framework:
+        translator: { fallback: ~ }
+
+
+For more information about translations, check `Symfony Translation documentation`_
+
+.. _`Symfony Translation documentation`: http://symfony.com/doc/current/book/translation.html
+
+
+Import Guestbook routing file
+-----------------------------
+
+Import the RPSGuestbook routing file by adding the following to you routing file
+
+.. code-block:: yml
+
+    # app/config/routing.yml
+    rps_guestbook:
+        resource: "@RPSGuestbookBundle/Resources/config/routing.yml"
+        prefix:   /
+
 
 Default Configuration
 ---------------------
@@ -48,68 +103,9 @@ Default Configuration
 
 .. _`View Default Configuration`: Resources/doc/default_configuration.rst
 
-.. code-block:: yml
 
-    rps_guestbook:
-        db_driver: orm
-        entry_per_page: 25              # number of entries to show on a page
-        auto_publish: true              # publish new entries or wait for admin approval
-        notify_admin: false             # send notification mail to admin when a new entry is saved
-        date_format: "d/m/Y H:i:s"      # date format used
-
-        mailer:
-            admin_email: ~              # email the admin notification is sent to
-            sender_email: ~             # sender email used
-            email_title: ~              # (optional)
-
-        class:
-            model: ~                    # (optional)
-            manager: ~                  # (optional)
-            pager : ~                   # (optional)
-            mailer: ~                   # (optional)
-
-        view:
-            frontend:
-                list: ~                 # guestbook entries view
-                new: ~                  # guestbook form
-
-            admin:
-                list: ~                 # admin guestbook entries view
-                edit: ~                 # admin guestbook entry edit view
-                reply: ~                # admin guestbook entry reply view
-
-            mail:
-                notify: ~               # notification mail template
-
-        form:
-            entry:
-                name: ~
-                type: ~
-                class: ~                # guestbook entry form class
-
-            edit:
-                name: ~
-                type: ~
-                class: ~                # guestbook entry edit form class
-
-            reply:
-                name: ~
-                type: ~
-                class: ~                # guestbook entry reply form class
-
-        spam_detection:
-            enable: false               # set to true to enable spam detection
-            service: ~                  # custom spam detector service (optional)
-
-        service:
-            pager: ~                    # custom pager service (optional)
-
-
-Each configuration option can be overriden in the app/config/config.yml file
-
-
-Step 2: Doctrine configuration
-==============================
+2: Doctrine configuration
+=========================
 
 The RPS GuestbookBundle supports both Doctrine ORM and Doctrine ODM.
 It is configured for ORM by default. To use Doctrine ODM, you must set this in the db_driver option.
@@ -159,8 +155,8 @@ Your custom class may extend the ``RPS\GuestbookBundle\Model\EntryManager`` clas
 ``RPS\GuestbookBundle\Model\EntryManagerInterface`` interface.
 
 
-Step 3: Mailer Configuration
-============================
+3: Mailer Configuration
+=======================
 
 To send emails, SwitfMailer must be installed and configured.
 
@@ -207,8 +203,8 @@ You can specify a custom notification template by overriding the mail template c
 
 
 
-Step 4: Pager Installation and Configuration
-============================================
+4: Pager Installation and Configuration
+=======================================
 Pagination is enabled by default.
 
 # using WhiteOctoberPagerfantaBundle for pagination
@@ -251,8 +247,8 @@ You can also specify a custom pager service to handle the guestbook entries pagi
 Your pager service class should implement the ``\RPS\CoreBundle\Pager\PagerInterface`` interface.
 
 
-Step 5: Spam Detection
-======================
+5: Spam Detection
+=================
 
 By default spam will not be detected.
 
@@ -291,8 +287,8 @@ You can also specify a custom spam detection service by setting the spam_detecti
 
 Your spam detector service class must implement the ``RPS\GuestbookBundle\SpamDetection\SpamDetectorInterface`` interface.
 
-Step 6: Custom Views/Templates
-==============================
+6: Custom Views/Templates
+=========================
 
 You can specify custom templates/views by overriding the corresponding view parameter. E.g.
 
