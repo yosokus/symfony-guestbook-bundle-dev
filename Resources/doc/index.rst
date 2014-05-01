@@ -13,12 +13,13 @@
 7. `Default Configuration`_
 
 .. _Installation: Resources/doc/installation.rst
-.. _Doctrine Configuration: Resources/doc/doctrine-config.rst
-.. _Mailer Configuration: Resources/doc/mailer-config.rst
-.. _Pager Configuration: Resources/doc/pager-config.rst
+.. _Doctrine Configuration: Resources/doc/doctrine.rst
+.. _Mailer Configuration: Resources/doc/mailer.rst
+.. _Pager Configuration: Resources/doc/pager.rst
 .. _`Spam Detection`: Resources/doc/spam_detection.rst
 .. _`Views/Templates`: Resources/doc/views.rst
-.. _`Default Configuration`: Resources/doc/default_config.rst
+.. _`Default Configuration`: Resources/doc/default_configuration.rst
+
 
 1 : Installation
 ================
@@ -87,6 +88,13 @@ Add the following to you routing file
         prefix:   /
 
 
+#. Update your schema
+
+Run the following command
+
+    app/console doctrine:schema:update --force
+
+
 #. Enable the translator in your configuration
 
 .. code-block:: yml
@@ -99,13 +107,6 @@ Add the following to you routing file
 For more information about translations, check the `Symfony Translation documentation`_
 
 .. _`Symfony Translation documentation`: http://symfony.com/doc/current/book/translation.html
-
-
-#. Update your schema
-
-Run the following command
-
-    app/console doctrine:schema:update --force
 
 
 2: Doctrine configuration
@@ -157,6 +158,11 @@ Your custom class may extend the ``RPS\GuestbookBundle\Model\EntryManager`` clas
 
 To send emails, SwitfMailer must be installed and configured.
 
+For more information about Swiftmailer configuration,
+check the `SwiftmailerBundle Configuration documentation`_
+
+.. _`SwiftmailerBundle Configuration documentation`: http://symfony.com/doc/current/reference/configuration/swiftmailer.html
+
 To send admin notification emails (email sent to the admin each time a new guestbook entry is saved),
 you must enable the mailer service and set the mail ``admin_email`` and ``sender_email`` config options
 
@@ -169,12 +175,6 @@ you must enable the mailer service and set the mail ``admin_email`` and ``sender
             admin_email: admin@localhost.com                # email the admin notification is sent to
             sender_email: admin@localhost.com               # sender email used
             email_title: New guestbook entry from {name}    # (optional)
-
-
-For more information about Swiftmailer configuration,
-check the `SwiftmailerBundle Configuration documentation`_
-
-.. _`SwiftmailerBundle Configuration documentation`: http://symfony.com/doc/current/reference/configuration/swiftmailer.html
 
 
 Using a custom mailer class
