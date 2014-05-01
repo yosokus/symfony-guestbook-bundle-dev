@@ -3,7 +3,7 @@
 /*
  * This file is part of the RPSGuestbookBundle package.
  *
- * (c) Yos Okus <yos.okus@gmail.com>
+ * (c) Yos Okusanya <yos.okus@gmail.com>
  *
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
@@ -35,6 +35,7 @@ class Configuration implements ConfigurationInterface
                 ->integerNode('entry_per_page')->min(1)->defaultValue(25)->end()
                 ->booleanNode('auto_publish')->defaultTrue()->end()
                 ->booleanNode('notify_admin')->defaultFalse()->end()
+                ->booleanNode('spam_detection')->defaultFalse()->end()
                 ->scalarNode('date_format')->defaultValue('d/m/Y H:i:s')->end()
 				
                 ->arrayNode('mailer')->addDefaultsIfNotSet()
@@ -154,16 +155,11 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()	
 
-                ->arrayNode('spam_detection')->addDefaultsIfNotSet()
-                    ->children()
-						->booleanNode('enable')->defaultFalse()->end()
-						->scalarNode('service')->cannotBeEmpty()->end()
-                    ->end()
-                ->end()	
-				
                 ->arrayNode('service')->addDefaultsIfNotSet()
                     ->children()
 						->scalarNode('pager')->cannotBeEmpty()->end()
+                        ->scalarNode('mailer')->cannotBeEmpty()->end()
+                        ->scalarNode('spam_detector')->cannotBeEmpty()->end()
                     ->end()
                 ->end()	
 				

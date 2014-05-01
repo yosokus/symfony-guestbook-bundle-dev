@@ -3,7 +3,7 @@
 /*
  * This file is part of the RPSGuestbookBundle package.
  *
- * (c) Yos Okus <yos.okus@gmail.com>
+ * (c) Yos Okusanya <yos.okus@gmail.com>
  *
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
@@ -21,9 +21,9 @@ interface SpamDetectorInterface
     /**
      * Checks if the guestbook entry is a spam.
      *
-     * @param  EntryInterface $guestbook
+     * @param  EntryInterface $entry
      *
      * @return boolean
      */
-    public function isSpam(EntryInterface $guestbook);
+    public function isSpam(EntryInterface $entry);
 }

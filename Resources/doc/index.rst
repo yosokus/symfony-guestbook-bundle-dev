@@ -1,28 +1,5 @@
-1. `Installation`_
-
-2. `Doctrine Configuration`_
-
-3. `Mailer Configuration`_
-
-4. `Pager Configuration`_
-
-5. `Spam Detection`_
-
-6. `Views/Templates`_
-
-7. `Default Configuration`_
-
-.. _Installation: Resources/doc/installation.rst
-.. _Doctrine Configuration: Resources/doc/doctrine.rst
-.. _Mailer Configuration: Resources/doc/mailer.rst
-.. _Pager Configuration: Resources/doc/pager.rst
-.. _`Spam Detection`: Resources/doc/spam_detection.rst
-.. _`Views/Templates`: Resources/doc/views.rst
-.. _`Default Configuration`: Resources/doc/default_configuration.rst
-
-
-1 : Installation
-================
+Installation
+============
 
 1. Add the following lines to your ``composer.json``
 
@@ -109,226 +86,24 @@ For more information about translations, check the `Symfony Translation document
 .. _`Symfony Translation documentation`: http://symfony.com/doc/current/book/translation.html
 
 
-2: Doctrine configuration
-=========================
 
-The RPS GuestbookBundle supports both Doctrine ORM and Doctrine ODM.
-It is configured for ORM by default. To use Doctrine ODM, you must set this in the ``db_driver`` option.
 
-.. code-block:: yml
+#. `Doctrine Configuration`_
 
-    rps_guestbook:
-        db_driver: mongodb
+#. `Mailer Configuration`_
 
+#. `Pager Configuration`_
 
-Using a custom model class
---------------------------
+#. `Spam Detection`_
 
-You can specify a custom model class by overriding the guestbook model class option e.g.
+#. `Views/Templates`_
 
-.. code-block:: yml
+#. `Default Configuration`_
 
-    rps_guestbook:
-        class:
-            model: MyProject\MyBundle\Entity\MyGuestbook
-
-Your custom model class may extend the ``RPS\GuestbookBundle\Model\Entry`` class. If you are not extending the
-``RPS\GuestbookBundle\Model\Entry`` class, your custom manager class must implement the
-``RPS\GuestbookBundle\Model\EntryInterface`` interface.
-
-
-Using a custom manager class
-----------------------------
-
-You can specify a custom guestbook entry manager class by overriding the manager class option e.g.
-
-.. code-block:: yml
-
-    rps_guestbook:
-        class:
-            manager: MyProject\MyBundle\Entity\MyGuestbookManager
-
-Your custom class may extend the ``RPS\GuestbookBundle\Model\EntryManager`` class. If you are not extending the
-``RPS\GuestbookBundle\Model\EntryManager`` class, your custom manager class must implement the
-``RPS\GuestbookBundle\Model\EntryManagerInterface`` interface.
-
-
-3: Mailer Configuration
-=======================
-
-To send emails, SwitfMailer must be installed and configured.
-
-For more information about Swiftmailer configuration,
-check the `SwiftmailerBundle Configuration documentation`_
-
-.. _`SwiftmailerBundle Configuration documentation`: http://symfony.com/doc/current/reference/configuration/swiftmailer.html
-
-To send admin notification emails (email sent to the admin each time a new guestbook entry is saved),
-you must enable the mailer service and set the mail ``admin_email`` and ``sender_email`` config options
-
-.. code-block:: yml
-
-    rps_guestbook:
-        notify_admin: true
-
-        mailer:
-            admin_email: admin@localhost.com                # email the admin notification is sent to
-            sender_email: admin@localhost.com               # sender email used
-            email_title: New guestbook entry from {name}    # (optional)
-
-
-Using a custom mailer class
----------------------------
-You can specify your custom guestbook mailer manager class by overriding the mailer class option e.g.
-
-.. code-block:: yml
-
-    rps_guestbook:
-        class:
-            manager: MyProject\MyBundle\Mailer\Mailer
-
-Your custom class may extend the ``RPS\GuestbookBundle\Mailer\BaseMailer`` class. If you are not extending the
-``RPS\GuestbookBundle\Mailer\BaseMailer`` class, your custom mailer class must implement the
-``RPS\GuestbookBundle\Mailer\MailerInterface`` interface.
-
-
-Using a custom notification template
-------------------------------------
-
-You can specify a custom notification template by overriding the mail template config setting
-
-.. code-block:: yml
-
-    rps_guestbook:
-        view:
-            mail:
-                notify: MyBundle:Mail:notify.txt.twig
-
-
-4: Pager Installation and Configuration
-=======================================
-
-Pagination is enabled by default.
-
-Using WhiteOctoberPagerfantaBundle for pagination
--------------------------------------------------
-
-The RPS GuestbookBundle is integrated with the WhiteOctoberPagerfantaBundle.
-
-To use WhiteOctoberPagerfantaBundle for pagination, you must install the WhiteOctoberPagerfantaBundle_.
-
-.. _WhiteOctoberPagerfantaBundle:: https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle‎
-
-The GuestbookBundle automatically checks if the WhiteOctoberPagerfantaBundle is installed.
-If the WhiteOctoberPagerfantaBundle is not installed, the GuestbookBundle will disable pagination.
-
-To limit the number of entries shown, set the ``entry_per_page`` config option
-
-.. code-block:: yml
-
-    rps_guestbook:
-        entry_per_page: 25
-
-Using a custom pager manager class
-----------------------------------
-
-You can specify your custom pager manager class by overriding the pager class option e.g.
-
-.. code-block:: yml
-
-    rps_guestbook:
-        class:
-            manager: MyProject\MyBundle\Pager\Pager
-
-Your custom class must implement the ``\RPS\CoreBundle\Pager\PagerInterface`` interface.
-
-Using a custom pager service
-----------------------------
-
-You can also specify a custom pager service to handle the guestbook entries pagination
-by setting the pager service config option.
-
-.. code-block:: yml
-
-    rps_guestbook:
-        service:
-            pager: my_pager
-
-Your pager service class must implement the ``\RPS\CoreBundle\Pager\PagerInterface`` interface.
-
-
-5: Spam Detection
-=================
-
-By default spam detection is **disabled**.
-
-To enable spam detection, you must set the ``spam_detection`` config option.
-
-.. code-block:: yml
-
-    rps_guestbook:
-        spam_detection:
-            enable: true
-
-You must either have the ``OrnicarAkismentBundle`` installed or use a different spam detector
-and integrate it with the RPSGuestbookBundle.
-
-
-Using Akismet for Spam Detection
---------------------------------
-
-The RPSGuestbookBundle is integrated with the OrnicarAkismentBundle.
-
-To use AkismetBundle for spam detection, you must install the OrnicarAkismentBundle_
-and configure it properly (see the docs for more information).
-
-.. _OrnicarAkismentBundle: https://github.com/ornicar/OrnicarAkismetBundle
-
-The RPSGuestbookBundle automatically checks if the ``OrnicarAkismentBundle`` is installed.
-If the OrnicarAkismentBundle is not installed, the RPSGuestbookBundle will disable spam detection.
-Setting the spam_detection ``enable`` config option in your app/config/config file
-will override this setting.
-
-
-Using a custom spam detection service
--------------------------------------
-
-You can also specify a custom spam detection service by setting the spam_detection ``service`` config option.
-
-.. code-block:: yml
-
-    rps_guestbook:
-        spam_detection:
-            service: my_spam_detector
-
-Your spam detector service class must implement the
-``RPS\GuestbookBundle\SpamDetection\SpamDetectorInterface`` interface.
-
-6: Custom Views/Templates
-=========================
-
-You can specify custom templates/views by overriding the corresponding view parameter. E.g.
-
-.. code-block:: yml
-
-    rps_guestbook:
-        view:
-            frontend:
-                list: MyprojectMyBundle:Frontend:index.html.twig
-                new: MyprojectMyBundle:Frontend:new.html.twig
-
-            admin:
-                list: MyprojectMyBundle:Admin:index.html.twig
-                edit: MyprojectMyBundle:Admin:edit.html.twig
-                reply: MyprojectMyBundle:Admin:reply.html.twig
-
-            mail:
-                notify: MyprojectMyBundle:Mail:notify.txt.twig
-
-
-7. Default Configuration
-========================
-
-`View Default Configuration`_.
-
-.. _`View Default Configuration`: Resources/doc/default_configuration.rst
+.. _Doctrine Configuration: Resources/doc/doctrine.rst
+.. _Mailer Configuration: Resources/doc/mailer.rst
+.. _Pager Configuration: Resources/doc/pager.rst
+.. _`Spam Detection`: Resources/doc/spam_detection.rst
+.. _`Views/Templates`: Resources/doc/views.rst
+.. _`Guestbook Administration`: Resources/doc/admin.rst
+.. _`Default Configuration`: Resources/doc/default_configuration.rst

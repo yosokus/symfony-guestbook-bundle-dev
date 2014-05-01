@@ -3,7 +3,7 @@
 <!--
  This file is part of the RPSGuestbookBundle
 
- (c) Yos Okus <yos.okus@gmail.com>
+ (c) Yos Okusanya <yos.okus@gmail.com>
 
  This source file is subject to the MIT license that is bundled
  with this source code in the file LICENSE.
@@ -27,14 +27,14 @@
     <services>       
         <!-- Pager -->
         <service id="rps_guestbook.pager.pagerfanta" class="%rps_guestbook.pager.class%">            
-            <argument type="service" id="twig.extension.pagerfanta" />
+            <argument type="service" id="twig.extension.pagerfanta"  on-invalid="null" />
 		</service>
 		
         <!-- Mailer -->
         <service id="rps_guestbook.mailer" class="%rps_guestbook.mailer.class%">
             <argument type="service" id="event_dispatcher" />
-            <argument type="service" id="mailer" />
-            <argument type="service" id="templating"/>
+            <argument type="service" id="mailer"  on-invalid="null" />
+            <argument type="service" id="templating" />
 			<argument>%rps_guestbook.mailer.config%</argument>
 		</service>
 		

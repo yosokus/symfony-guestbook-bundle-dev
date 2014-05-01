@@ -3,7 +3,7 @@
 /*
  * This file is part of the RPSGuestbookBundle package.
  *
- * (c) Yos Okus <yos.okus@gmail.com>
+ * (c) Yos Okusanya <yos.okus@gmail.com>
  *
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
@@ -22,10 +22,10 @@ class MailEvent extends EntryEvent
 
 
     /**
-     * Constructor.
+     * Constructor
      *
-     * @param CommentInterface 	$comment
-     * @param array 			$options
+     * @param EntryInterface $entry
+     * @param array $options
      */
     public function __construct(EntryInterface $entry, array $options)
     {

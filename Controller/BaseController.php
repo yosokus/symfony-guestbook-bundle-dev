@@ -3,7 +3,7 @@
 /*
  * This file is part of the RPSGuestbookBundle package.
  *
- * (c) Yos Okus <yos.okus@gmail.com>
+ * (c) Yos Okusanya <yos.okus@gmail.com>
  *
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
- * Base class for the guestbook controller.
+ * Base class for the guestbook controllers.
  */
 abstract class BaseController extends Controller
 {

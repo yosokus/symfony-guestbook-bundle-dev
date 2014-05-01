@@ -1,12 +1,12 @@
 RPS Guestbook Bundle (Beta version)
 ===================================
 
-A simple and extendable guestbook package based on Doctrine2 (ORM and MongoDB) and Symfony2.
+A simple yet extendable guestbook package based on Doctrine2 (ORM and MongoDB) and Symfony2.
 
 Documentation
 -------------
 
-The bulk of the documentation is stored in the `Resources/doc/index.md`
+The bulk of the documentation is stored in the `Resources/doc/index.rst`
 file in this bundle.
 
 [Read the Documentation](Resources/doc/index.rst)

@@ -8,6 +8,7 @@ Default Configuration
         entry_per_page: 25                                          # number of entries to show on a page
         auto_publish: true                                          # publish new entries or wait for admin approval
         notify_admin: false                                         # send notification mail to admin when a new entry is saved
+        spam_detection: false                                       # enable/disable spam detection
         date_format: "d/m/Y H:i:s"                                  # date format used
 
         mailer:
@@ -16,10 +17,10 @@ Default Configuration
             email_title: New guestbook entry from {name}            # (optional) notification email title
 
         class:
-            model: RPS\GuestbookBundle\Entity\Entry                 # (optional) default model
-            manager: RPS\GuestbookBundle\Entity\EntryManager        # (optional) default manager
-            pager : RPS\CoreBundle\Pager\PagerfantaORM              # (optional) default pager
-            mailer: RPS\GuestbookBundle\Mailer\Mailer               # (optional) default mailer
+            model: RPS\GuestbookBundle\Entity\Entry                 # (optional) guestbook model class
+            manager: RPS\GuestbookBundle\Entity\EntryManager        # (optional) guestbook manager class
+            pager : RPS\CoreBundle\Pager\PagerfantaORM              # (optional) pager class
+            mailer: RPS\GuestbookBundle\Mailer\Mailer               # (optional) mailer class
 
         view:
             frontend:
@@ -50,10 +51,8 @@ Default Configuration
                 type: rps_guestbook_entry_reply
                 class: RPS\GuestbookBundle\Form\Type\EntryReplyType # guestbook entry reply form class
 
-        spam_detection:
-            enable: false                                           # set to true to enable spam detection
-            service: ~                                              # (optional) custom spam detector service
-
         service:
             pager: ~                                                # (optional) custom pager service
+            mailer: ~                                               # (optional) custom mailer service
+            spam_detector: ~                                        # (optional) custom spam detector service
 

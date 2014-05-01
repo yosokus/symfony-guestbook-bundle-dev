@@ -3,7 +3,7 @@
 /*
  * This file is part of the RPSGuestbookBundle package.
  *
- * (c) Yos Okus <yos.okus@gmail.com>
+ * (c) Yos Okusanya <yos.okus@gmail.com>
  *
  * This source file is subject to the MIT license that is bundled
  * with this source code in the file LICENSE.
@@ -36,7 +36,7 @@ class RPSGuestbookExtension extends Extension implements PrependExtensionInterfa
         // enable spam detection if AkismetBundle is registered
         // else disable spam detection
         // can be overridden by setting the rps_guestbook.spam_detection.enable config
-        $rpsConfig['spam_detection']['enable'] = isset($bundles['AkismetBundle']) ? true : false;
+        $rpsConfig['spam_detection'] = isset($bundles['AkismetBundle']) ? true : false;
 		
         // check if WhiteOctoberPagerfantaBundle is registered
         // if not set the default pager class
@@ -117,21 +117,25 @@ class RPSGuestbookExtension extends Extension implements PrependExtensionInterfa
 			$container->setParameter('rps_guestbook.pager.class', $config['class']['pager']);
 		}
 		
-		// load external pager if set  else load the default pager
-		if (isset($config['service']['pager'])) {
-			$container->setAlias('rps_guestbook.pager', $config['service']['pager']);   
-		} else {
-			$container->setAlias('rps_guestbook.pager', 'rps_guestbook.pager.pagerfanta'); 
+		// load custom mailer service if set
+		if (isset($config['service']['mailer'])) {
+			$container->setAlias('rps_guestbook.mailer', $config['service']['mailer']);
 		}
 
+		// load custom pager service if set  else load the default pager
+		if (isset($config['service']['pager'])) {
+			$container->setAlias('rps_guestbook.pager', $config['service']['pager']);
+		} else {
+			$container->setAlias('rps_guestbook.pager', 'rps_guestbook.pager.pagerfanta');
+		}
 
 		// spam detection
-		$container->setParameter('rps_guestbook.enable_spam_detection', $config['spam_detection']['enable']);
+		$container->setParameter('rps_guestbook.enable_spam_detection', $config['spam_detection']);
 		
-        if ($config['spam_detection']['enable']) {
+        if ($config['spam_detection']) {
 			// load external spam detector if set else load default
-			if (isset($config['spam_detection']['service'])) {
-				$container->setAlias('rps_guestbook.spam_detector', $config['spam_detection']['service']);   
+			if (isset($config['service']['spam_detector'])) {
+				$container->setAlias('rps_guestbook.spam_detector', $config['service']['spam_detector']);
 			} else {
 				$loader->load('spam_detection.xml');
 				$container->setAlias('rps_guestbook.spam_detector', 'rps_guestbook.spam_detector.akismet'); 
