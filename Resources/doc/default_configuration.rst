@@ -56,3 +56,26 @@ Default Configuration
             mailer: ~                                               # (optional) custom mailer service
             spam_detector: ~                                        # (optional) custom spam detector service
 
+
+Other topics
+============
+
+#. `Installation`_
+
+#. `Doctrine Configuration`_
+
+#. `Mailer Configuration`_
+
+#. `Pager Configuration`_
+
+#. `Spam Detection`_
+
+#. `Views/Templates`_
+
+.. _Installation: Resources/doc/index.rst
+.. _Doctrine Configuration: Resources/doc/doctrine.rst
+.. _Mailer Configuration: Resources/doc/mailer.rst
+.. _Pager Configuration: Resources/doc/pager.rst
+.. _`Spam Detection`: Resources/doc/spam_detection.rst
+.. _`Views/Templates`: Resources/doc/views.rst
+.. _`Guestbook Administration`: Resources/doc/admin.rst

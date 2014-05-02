@@ -29,9 +29,9 @@
         <field name="comment" column="comment" type="text" />
         <field name="state" column="state" type="boolean" />
         <field name="replied" column="replied" type="boolean" nullable="true" />
-        <field name="createdAt" column="created_at" type="datetime" />
-        <field name="updatedAt" column="updated_at" type="datetime" nullable="true" />
-        <field name="repliedAt" column="replied_at" type="datetime" nullable="true" />
+        <field name="createdAt" column="createdAt" type="datetime" />
+        <field name="updatedAt" column="updatedAt" type="datetime" nullable="true" />
+        <field name="repliedAt" column="repliedAt" type="datetime" nullable="true" />
 
     </document>
 

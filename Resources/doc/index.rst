@@ -86,8 +86,8 @@ For more information about translations, check the `Symfony Translation document
 .. _`Symfony Translation documentation`: http://symfony.com/doc/current/book/translation.html
 
 
-
-
+Other topics
+============
 #. `Doctrine Configuration`_
 
 #. `Mailer Configuration`_
