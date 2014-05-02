@@ -119,7 +119,7 @@ class EntryManager extends AbstractEntryManager
      */
     public function getPaginatedList($offset, $limit, $criteria = array())
     {
-        $queryBuilder = $this->dm->createQueryBuilder($this->class);
+        $queryBuilder = $this->repository->createQueryBuilder();
          
         // set state
         if(isset($criteria['state'])) {
@@ -161,7 +161,7 @@ class EntryManager extends AbstractEntryManager
      */
     public function doDelete($ids)
     {
-        $this->dm->createQueryBuilder($this->getClass())
+        $this->repository->createQueryBuilder()
             ->remove()
             ->field('id')->in($ids)
             ->getQuery()
@@ -173,7 +173,7 @@ class EntryManager extends AbstractEntryManager
      */
     protected function doUpdateState($ids, $state)
     {
-        $this->dm->createQueryBuilder($this->getClass())
+        $this->repository->createQueryBuilder()
             ->update()
             ->multiple(true)
             ->field('state') ->set((int)$state)
