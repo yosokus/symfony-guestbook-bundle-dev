@@ -49,7 +49,7 @@ class RPSGuestbookExtension extends Extension implements PrependExtensionInterfa
             if ( 'orm' == $guestbookConfig['db_driver']) {
                 $rpsConfig['class']['pager'] = 'RPS\CoreBundle\Pager\DefaultORM';
             } else {
-                $rpsConfig['class']['pager'] = 'RPS\CoreBundle\Pager\DefaultODM';
+                $rpsConfig['class']['pager'] = 'RPS\CoreBundle\Pager\DefaultMongodb';
             }
         }
 
