@@ -138,7 +138,7 @@ class EntryManager extends AbstractEntryManager
         // set ordering
         if(isset($criteria['order'])) {
             foreach($criteria['order'] as $ordering) {
-                $queryBuilder->addOrderBy($ordering['sort'], $ordering['order']);
+                $queryBuilder->addOrderBy($ordering['field'], $ordering['order']);
             }
         } else  {
             $queryBuilder->orderBy('c.createdAt', 'DESC');	//default ordering

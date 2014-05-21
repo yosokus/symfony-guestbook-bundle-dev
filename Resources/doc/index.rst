@@ -3,7 +3,7 @@ Installation
 
 1. Add the following lines to your ``composer.json``
 
-.. code-block:: php
+.. code-block:: js
 
     // composer.json
     "require": {
@@ -53,7 +53,7 @@ Add the RPSCoreBundle and RPSGuestbookBundle to your application kernel.
     }
 
 
-#. Import Guestbook routing file
+#. Import the RPSGuestbookBundle routing file
 
 Add the following to you routing file
 
@@ -63,13 +63,6 @@ Add the following to you routing file
     rps_guestbook:
         resource: "@RPSGuestbookBundle/Resources/config/routing.yml"
         prefix:   /
-
-
-#. Update your schema
-
-Run the following command
-
-    app/console doctrine:schema:update --force
 
 
 #. Enable the translator in your configuration
@@ -86,6 +79,21 @@ For more information about translations, check the `Symfony Translation document
 .. _`Symfony Translation documentation`: http://symfony.com/doc/current/book/translation.html
 
 
+#. Update your schema
+
+For ORM users run the following command
+
+.. code-block:: bash
+
+    app/console doctrine:schema:update --force
+
+
+For MongoDB users run the following command.
+
+.. code-block:: bash
+    php app/console doctrine:mongodb:schema:create --index
+
+
 Other topics
 ============
 #. `Doctrine Configuration`_
@@ -97,6 +105,8 @@ Other topics
 #. `Spam Detection`_
 
 #. `Views/Templates`_
+
+#. `Guestbook Administration`_
 
 #. `Default Configuration`_
 

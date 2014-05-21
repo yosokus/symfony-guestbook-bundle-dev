@@ -14,16 +14,13 @@
                         xsi:schemaLocation="http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping
                         http://doctrine-project.org/schemas/odm/doctrine-mongo-mapping.xsd">
 
-	<document name="RPS\GuestbookBundle\Document\Entry" table="rps_guestbook">
+    <document name="RPS\GuestbookBundle\Document\Entry" collection="rps_guestbook">
         <lifecycle-callbacks>
             <lifecycle-callback type="prePersist" method="prePersist" />
             <lifecycle-callback type="preUpdate" method="preUpdate" />
         </lifecycle-callbacks>
 
-        <id name="id" type="integer" column="id">
-            <generator strategy="AUTO"/>
-        </id>
-
+        <field fieldName="id" id="true" />
         <field name="name" column="name" type="string" length="100" nullable="false" />
         <field name="email" column="email" type="string" length="100" nullable="false" />
         <field name="comment" column="comment" type="text" />

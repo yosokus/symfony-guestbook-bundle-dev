@@ -57,6 +57,9 @@ Default Configuration
             spam_detector: ~                                        # (optional) custom spam detector service
 
 
+Each of these configuration options can be overridden in your app/config/config.yml file
+
+
 Other topics
 ============
 

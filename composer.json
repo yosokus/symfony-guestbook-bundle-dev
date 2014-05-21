@@ -20,8 +20,8 @@
     },
 
     "suggest": {
-        "white-october/pagerfanta-bundle": "Integrates white-october/pagerfanta for pagination.",
-        "ornicar/akismet-bundle": "Integrates Akismet for spamdetection."
+        "ornicar/akismet-bundle": "Integrates Akismet for spam detection.",
+        "white-october/pagerfanta-bundle": "Integrates white-october/pagerfanta for pagination."
     },
 
     "autoload": {

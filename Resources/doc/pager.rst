@@ -1,26 +1,21 @@
 Pager Installation and Configuration
 ====================================
 
-Pagination is enabled by default.
+The RPSGuestbookBundle uses the ``WhiteOctoberPagerfantaBundle_`` for pagination.
 
-Using WhiteOctoberPagerfantaBundle for pagination
--------------------------------------------------
+To use ``WhiteOctoberPagerfantaBundle`` as the RPSGuestbookBundle pager ,
+you must install the WhiteOctoberPagerfantaBundle_.
 
-The RPS GuestbookBundle is integrated with the WhiteOctoberPagerfantaBundle.
+If the WhiteOctoberPagerfantaBundle is not installed, the RPSGuestbookBundle will disable pagination.
 
-To use WhiteOctoberPagerfantaBundle for pagination, you must install the WhiteOctoberPagerfantaBundle_.
-
-.. _WhiteOctoberPagerfantaBundle:: https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle‎
-
-The GuestbookBundle automatically checks if the WhiteOctoberPagerfantaBundle is installed.
-If the WhiteOctoberPagerfantaBundle is not installed, the GuestbookBundle will disable pagination.
-
-To limit the number of entries shown, set the ``entry_per_page`` config option
+To limit the number of guestbook entries shown, set the ``entry_per_page`` config option
 
 .. code-block:: yml
 
+    # app/config/config.yml
     rps_guestbook:
         entry_per_page: 25
+
 
 Using a custom pager manager class
 ----------------------------------
@@ -29,25 +24,28 @@ You can specify your custom pager manager class by overriding the pager class op
 
 .. code-block:: yml
 
+    # app/config/config.yml
     rps_guestbook:
         class:
-            manager: MyProject\MyBundle\Pager\Pager
+            pager: MyProject\MyBundle\Pager\Pager
 
-Your custom class must implement the ``\RPS\CoreBundle\Pager\PagerInterface`` interface.
+Your custom class **must** implement the ``\RPS\CoreBundle\Pager\PagerInterface`` interface.
+
 
 Using a custom pager service
 ----------------------------
 
-You can also specify a custom pager service to handle the guestbook entries pagination
+You can specify a custom pager service to handle the guestbook entries pagination
 by setting the pager service config option.
 
 .. code-block:: yml
 
+    # app/config/config.yml
     rps_guestbook:
         service:
             pager: my_pager
 
-Your pager service class must implement the ``\RPS\CoreBundle\Pager\PagerInterface`` interface.
+Your pager service class **must** implement the ``\RPS\CoreBundle\Pager\PagerInterface`` interface.
 
 
 Other topics
@@ -57,7 +55,7 @@ Other topics
 
 #. `Doctrine Configuration`_
 
-#. `Mailer COnfiguration`_
+#. `Mailer Configuration`_
 
 #. `Spam Detection`_
 

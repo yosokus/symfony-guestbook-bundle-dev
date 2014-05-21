@@ -1,22 +1,19 @@
-RPS Guestbook Bundle (Beta version)
-===================================
+#RPS Guestbook Bundle (Beta version)
 
-A simple yet extendable guestbook package based on Doctrine2 (ORM and MongoDB) and Symfony2.
+A simple yet extensible guestbook package based on Doctrine2 (ORM and MongoDB) and Symfony2.
 
-Documentation
--------------
+##Features
 
-The bulk of the documentation is stored in the `Resources/doc/index.rst`
-file in this bundle.
+- Compatible with Doctrine ORM **and** MongoDB ODM.
+- Extensible models
+- Extensible through events fired during the guestbook lifecycle
+- Integrated with [OrnicarAkismentBundle](https://github.com/ornicar/OrnicarAkismetBundle) spam detector
+- Integrated with [WhiteOctoberPagerfantaBundle](https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle‎) (optional)
 
-[Read the Documentation](Resources/doc/index.rst)
+##Installation
 
-Installation
-------------
+The installation instructions are located in the [documentation](Resources/doc/index.rst).
 
-All the installation instructions are located in the [documentation](Resources/doc/index.rst).
-
-License
--------
+##License
 
 This bundle is available under the [MIT license](Resources/meta/LICENSE).

@@ -26,7 +26,7 @@
 
     <services>       
         <!-- Pager -->
-        <service id="rps_guestbook.pager.pagerfanta" class="%rps_guestbook.pager.class%">            
+        <service id="rps_guestbook.pager.default" class="%rps_guestbook.pager.class%">
             <argument type="service" id="twig.extension.pagerfanta"  on-invalid="null" />
 		</service>
 		

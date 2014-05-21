@@ -14,16 +14,14 @@
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <!--parameter key="rps_guestbook.model.guestbook.class">RPS\GuestbookBundle\Document\Guestbook</parameter>
-        <parameter key="rps_guestbook.manager.entry.class">RPS\GuestbookBundle\Document\GuestbookManager</parameter-->
         <parameter key="rps_guestbook.model.entry.class">RPS\GuestbookBundle\Document\Entry</parameter>
         <parameter key="rps_guestbook.manager.entry.class">RPS\GuestbookBundle\Document\EntryManager</parameter>
-        <parameter key="rps_guestbook.pager.class">RPS\CoreBundle\Pager\PagerfantaODM</parameter>
+        <parameter key="rps_guestbook.pager.class">RPS\CoreBundle\Pager\PagerfantaMongodb</parameter>
     </parameters>
 
     <services>
         <!-- Document manager -->
-        <service id="rps_guestbook.document_manager" alias="doctrine.odm.default_document_manager" />
+        <service id="rps_guestbook.document_manager" alias="doctrine_mongodb.odm.default_document_manager" />
 
         <!-- Entry Manager -->
         <service id="rps_guestbook.entry_manager" class="%rps_guestbook.manager.entry.class%">

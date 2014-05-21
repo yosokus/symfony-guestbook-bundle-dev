@@ -26,7 +26,7 @@ and configure it properly (see the docs for more information).
 
 The RPSGuestbookBundle automatically checks if the ``OrnicarAkismentBundle`` is installed.
 If the OrnicarAkismentBundle is not installed, the RPSGuestbookBundle will disable spam detection.
-Setting the spam_detection ``enable`` config option in your app/config/config file
+Setting the ``spam_detection`` config option in your app/config/config file
 will override this setting.
 
 
@@ -37,6 +37,7 @@ You can also specify a custom spam detection service by setting the ``spam_detec
 
 .. code-block:: yml
 
+    # app/config/config.yml
     rps_guestbook:
         service:
             spam_detector: my_spam_detector

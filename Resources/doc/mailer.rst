@@ -13,6 +13,7 @@ you must enable the mailer service and set the mail ``admin_email`` and ``sender
 
 .. code-block:: yml
 
+    # app/config/config.yml
     rps_guestbook:
         notify_admin: true
 
@@ -28,6 +29,7 @@ You can specify your custom guestbook mailer manager class by overriding the mai
 
 .. code-block:: yml
 
+    # app/config/config.yml
     rps_guestbook:
         class:
             manager: MyProject\MyBundle\Mailer\Mailer
@@ -44,6 +46,7 @@ You can also specify a custom mailer service by setting the `` mailer service`` 
 
 .. code-block:: yml
 
+    # app/config/config.yml
     rps_guestbook:
         service:
             mailer: my_mailer
@@ -60,6 +63,7 @@ You can specify a custom notification template by overriding the mail template c
 
 .. code-block:: yml
 
+    # app/config/config.yml
     rps_guestbook:
         view:
             mail:

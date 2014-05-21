@@ -1,10 +1,11 @@
 Views/Templates
 ===============
 
-You can specify custom templates/views by overriding the corresponding view parameter. E.g.
+You can specify custom templates/views by overriding the corresponding view parameter e.g.
 
 .. code-block:: yml
 
+    # app/config/config.yml
     rps_guestbook:
         view:
             frontend:

@@ -123,36 +123,39 @@ class EntryManager extends AbstractEntryManager
          
         // set state
         if(isset($criteria['state'])) {
-			$queryBuilder->field('state')->equals((int)$criteria['state']);
+            $queryBuilder->field('state')->equals((bool)$criteria['state']);
         }
 
         // set replied
         if(isset($criteria['replied'])) {
-            $queryBuilder->field('replied')->equals((int)$criteria['replied']);
+            $queryBuilder->field('replied')->equals((bool)$criteria['replied']);
         }
 
         // set dates
         if(isset($criteria['date_from'])) {
-			$queryBuilder->field('createdAt')->gte($criteria['date_from']);
+            $queryBuilder->field('createdAt')->gte($criteria['date_from']);
         }
-		
+
         if(isset($criteria['date_to'])) {
-			$queryBuilder->field('createdAt')->lte($criteria['date_from']);
+            $queryBuilder->field('createdAt')->lte($criteria['date_from']);
         }
 
         // set ordering
+        $sorting = array();
         if(isset($criteria['order'])) {
             foreach($criteria['order'] as $ordering) {
-                $queryBuilder->sort($ordering['sort'], $ordering['order']);
+                $sorting[$ordering['field']] = $ordering['order'];
             }
         } else  {
-            $queryBuilder->sort('createdAt', 'DESC');	//default ordering
+            $sorting['createdAt'] = 'DESC';	//default ordering
         }
 
-		if (null === $this->pager) {
-			return $queryBuilder->getQuery()->getResult();
-		}
-		
+        $queryBuilder->sort($sorting);
+
+        if (null === $this->pager) {
+            return $queryBuilder->getQuery()->execute();
+        }
+
         return $this->pager->getList($queryBuilder, $offset, $limit);
     }
 
@@ -176,7 +179,7 @@ class EntryManager extends AbstractEntryManager
         $this->repository->createQueryBuilder()
             ->update()
             ->multiple(true)
-            ->field('state') ->set((int)$state)
+            ->field('state')->set((int)$state)
             ->field('updatedAt')->set(new \DateTime())
             ->field('id')->in($ids)
             ->getQuery()

@@ -136,7 +136,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="{{ remove_link }}" onclick="if(!removeComment()){return false;}">
+                                                <a href="{{ remove_link }}" onclick="if(!removeEntry()){return false;}">
                                                     <i class="glyphicon glyphicon-trash"></i> {{ delete_text }}
                                                 </a>
                                             </li>
@@ -183,14 +183,14 @@ function deleteEntries()
 
 function submitAdminForm(url)
 {
-    var guestbookForm = $('#rpsGuestbookAdminList');
+    var guestbookForm = jQuery('#rpsGuestbookAdminList');
     guestbookForm.attr("action", url);
     guestbookForm.submit();
 }
 
 function checkEntrySelected()
 {
-    return $('.rps-guestbook-checkbox-list:checkbox:checked').length == 0;
+    return jQuery('.rps-guestbook-checkbox-list:checkbox:checked').length == 0;
 }
 
 function publishEntries()
@@ -211,13 +211,14 @@ function unpublishEntries()
 	submitAdminForm('{{ path("rps_guestbook_unpublish") }}');
 }
 
-$(function() {
-    $('#rpsGuestbookMasterSelect').change(function(){
-        $('.rps-guestbook-checkbox-list').prop('checked', $(this).prop('checked'));
+(function($){
+    $(function() {
+        $('#rpsGuestbookMasterSelect').change(function(){
+            $('.rps-guestbook-checkbox-list').prop('checked', $(this).prop('checked'));
+        });
     });
-});
 
-$("[data-toggle=tooltip]").tooltip({ placement: 'top'});
+    $("[data-toggle=tooltip]").tooltip({ placement: 'top'});
+}(jQuery));
 </script>
 {% endblock %}
-
