@@ -1,7 +1,7 @@
 Spam Detection
 ==============
 
-By default spam detection is **disabled**.
+Spam detection is **disabled** by default.
 
 To enable spam detection, you must set the ``spam_detection`` config option.
 
