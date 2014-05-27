@@ -3,7 +3,7 @@
 /*
  * This file is part of the RPSGuestbookBundle package
  *
- * (c) Yos Okus <yos.okus@gmail.com>
+ * (c) Yos Okus <yos.okusanya@gmail.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
